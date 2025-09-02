@@ -39,7 +39,7 @@ function handleAdd (imdbid) {
 
 async function handleSearch (movieName) {
     console.log("start handle search")
-    const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${movieName}`)
+    const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${movieName}`)
     const data = await response.json()
     
     if (data.Response === "False"){
@@ -56,7 +56,7 @@ async function getDetailedMovies (movies) {
     console.log("processing movie: ", movies)
     let detailedMovies = []
     for (let movie of movies){
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}&plot=full`)
+        const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}&plot=full`)
         const data = await response.json()
         detailedMovies.push(data)
     }
