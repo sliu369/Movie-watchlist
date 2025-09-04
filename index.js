@@ -55,7 +55,7 @@ async function getDetailedMovies (movies) {
     console.log("processing movie: ", movies)
     let detailedMovies = []
     for (let movie of movies){
-        const response = await fetch(`/.netlify/functions/ImdbAPI?imdbID=${movie.imdbID}`)
+        const response = await fetch(`/.netlify/functions/getImdbAPI?imdbID=${movie.imdbID}`)
         const data = await response.json()
         detailedMovies.push(data)
     }
