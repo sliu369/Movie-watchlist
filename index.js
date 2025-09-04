@@ -51,17 +51,20 @@ async function handleSearch (movieName) {
     
 }
 
-async function getDetailedMovies (movies) {
+async function getDetailedMovies(movies) {
     console.log("processing movie: ", movies)
-    let detailedMovies = []
-    for (let movie of movies){
-        const response = await fetch(`/.netlify/functions/getImdbAPI?imdbID=${movie.imdbID}`)
-        const data = await response.json()
-
-        detailedMovies.push(data)
-    }
+  
+    // Map each movie to a fetch promise
+    const fetchPromises = movies.map(movie =>
+      fetch(`/.netlify/functions/getImdbAPI?imdbID=${movie.imdbID}`)
+        .then(res => res.json())
+    )
+  
+    // Wait for all fetches to complete
+    const detailedMovies = await Promise.all(fetchPromises)
+  
     return detailedMovies
-}
+  }  
 
 function renderMovies (movies) {
     console.log("rendering movies")
