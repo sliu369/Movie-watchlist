@@ -1,5 +1,4 @@
 const movieList = document.querySelector('.movie-list')
-const apiKey = "8a206c48"
 
 let watchList = JSON.parse(localStorage.getItem("watchList")) || []
 let currentMovies = []
@@ -39,7 +38,7 @@ function handleAdd (imdbid) {
 
 async function handleSearch (movieName) {
     console.log("start handle search")
-    const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${movieName}`)
+    const response = await fetch(`/.netlify/functions/getAPI?query=${movieName}}`)
     const data = await response.json()
     
     if (data.Response === "False"){
