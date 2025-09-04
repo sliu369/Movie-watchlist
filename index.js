@@ -58,9 +58,6 @@ async function getDetailedMovies (movies) {
         const response = await fetch(`/.netlify/functions/getImdbAPI?imdbID=${movie.imdbID}`)
         const data = await response.json()
 
-        console.log("Checking what getImdb function return")
-        console.log(data)
-        
         detailedMovies.push(data)
     }
     return detailedMovies

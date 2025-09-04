@@ -4,10 +4,9 @@ export async function handler(event, context) {
       const imdbID = event.queryStringParameters.imdbID
   
       // Call your API with the secret key
-      const response = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${imdbID}`)
+      const response = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${imdbID}`)
       const data = await response.json()
-      console.log("Checking what getImdbAPI function return")
-      console.log(data)
+
       return {
         statusCode: 200,
         body: JSON.stringify(data),
