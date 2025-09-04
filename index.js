@@ -66,7 +66,8 @@ function renderMovies (movies) {
     console.log("rendering movies")
     let result = ""
     for (let movie of movies){
-
+        console.log("Checking for missing rating")
+        console.log(movie.Ratings)
         // safety check for missing rating
         if (!movie.Ratings[0]){
             movie.Ratings[0] = {Value: "N/A"}
